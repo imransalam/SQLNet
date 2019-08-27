@@ -180,6 +180,8 @@ def epoch_exec_acc(model, batch_size, sql_data, table_data, db_path):
             try:
                 ret_pred = engine.execute(tid,
                         sql_pred['sel'], sql_pred['agg'], sql_pred['conds'])
+
+                print(ret_pred)
             except:
                 ret_pred = None
             tot_acc_num += (ret_gt == ret_pred)
@@ -207,7 +209,6 @@ def epoch_acc(model, batch_size, sql_data, table_data, pred_entry):
         pred_queries = model.gen_query(score, q_seq, col_seq,
                 raw_q_seq, raw_col_seq, pred_entry)
 
-        print(pred_queries)
         one_err, tot_err = model.check_acc(raw_data,
                 pred_queries, query_gt, pred_entry)
 
@@ -248,6 +249,8 @@ def epoch_reinforce_train(model, optimizer, batch_size, sql_data, table_data, db
             try:
                 ret_pred = engine.execute(tid,
                         sql_pred['sel'], sql_pred['agg'], sql_pred['conds'])
+
+                print(ret_pred)
             except:
                 ret_pred = None
 
