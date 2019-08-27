@@ -206,6 +206,8 @@ def epoch_acc(model, batch_size, sql_data, table_data, pred_entry):
                 pred_entry, gt_sel = gt_sel_seq)
         pred_queries = model.gen_query(score, q_seq, col_seq,
                 raw_q_seq, raw_col_seq, pred_entry)
+
+        print(pred_queries)
         one_err, tot_err = model.check_acc(raw_data,
                 pred_queries, query_gt, pred_entry)
 
